@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        h1{
+            color: blue;
+        }
+        li{
+            color: blue !important;
+            /* 최우선순위 !important */
+        }
+        .apple{
+            color: green;
+        }
+        #apple{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 디자인이 겹쳤을 때 내부에 있는 것이 우선순위가 높다 
+        인라인 > 내부style > 외부style
+    -->
+
+    <!-- 아이디 > 클래스 > 타입 -->
+    <ul>
+        <li id ="apple" class="apple">사과</li>
+    </ul>
+    <h1 style="color: green;">Hello</h1>
+</body>
+</html>

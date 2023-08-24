@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 연산자
+        // 1. 산술연산자 : + - * / %
+        // 2. 비교연산자 : == != > >= < <= === !==
+        // 3. 대입연산자 : = += -= *= /= %=
+        // 4. 논리연산자 : && || !
+        // 5. 증감연산자 : ++ --
+        // 6. 삼항연산자 : 조건식 ? true일 때 : flase일 때
+
+        // '/' 연산자 : 나누기
+        // 숫자가 나누어 떨어지지 않는 경우 결과값이 실수형태로 출력된다.
+        console.log(6/3);   // 2
+        console.log(5/2);   // 2.5
+
+        // ==(동등연산자) vs ===(일치연산자)
+        // JavaScript 비교연산자의 특징!
+        // - 숫자데이터와 문자열 데이터를 비교할 때
+        //   문자열 데이터를 숫자로 자동 형변환
+        console.log(5 == 5);
+        console.log(5 == 3);
+        console.log(5 == "5");  // "5" -> 5 변환 => 비교결과 true
+        console.log(5 < "7");   // true
+        console.log(3==="3");   // false; 자동형변환 x -> 데이터와 자료형 모두 비교
+
+        // 비교연산을 직관적으로 인지할 수 있도록 변환해주는 것을 권장!
+        console.log(2 < parseInt("3"));
+        console.log(2.2 < parseFloat("3.5"));
+
+
+    </script>
+</body>
+</html>

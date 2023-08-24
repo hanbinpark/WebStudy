@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 함수(function)
+        // - 특정 로직을 수행하기 위해 독립적으로 설계하는 구조
+        // - 코드를 재사용, 유지보수 용이, 신뢰성, 가독성
+
+
+        // 함수 선언방법 3가지
+        // 1.함수선언문
+        // - 함수 호이스팅 : 함수선언문을 끌어올려서 실행
+        // intro();    // 정상적으로 실행됨
+        
+        // 전역변수선언 & 초기화
+        let msg2 = "Hello!"
+
+        function intro(){
+            console.log("intro()함수가 실행되었습니다!");
+
+            // 지역변수선언 & 초기화
+            let msg = "function!";
+            console.log(msg);
+            console.log(msg2);
+        }
+
+        console.log(msg2);
+
+        // msg는 intro()의 지역변수이기 때문에 함수바깥쪽에서 사용이 불가능하다!
+        // console.log(msg);
+
+        // 함수호출(함수실행)
+        intro();
+
+        // 2.함수표현식
+        // - 함수 호이스팅이 발생하지 않는다!
+        // 함수를 변수에 저장하기 전에 사용하는 것은 불가능하다!
+
+        let intro2 = function(){
+            console.log("함수표현식 실행!");
+        }
+
+        intro2();
+
+        // 3.화살표함수
+        let intro3 = () => {
+            console.log("화살표함수 실행!");
+        }
+
+        intro3();
+
+
+
+    </script>
+</body>
+</html>

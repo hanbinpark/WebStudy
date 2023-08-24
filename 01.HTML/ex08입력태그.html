@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 모든 입력받는 태그는 form태그 안에 들어가 있어야 한다. -->
+    <form>
+        <!-- value : 기본값 지정 
+             type : input 태그에 작성되는 데이터 양식(글자, 숫자, 비밀번호, 이메일 등)
+             placeholder : 미리보고 텍스트
+             maxlength: 최대 글자수 지정
+             readonly : 읽기만 가능 
+        -->
+        ID : <input  maxlength="10" type="text" placeholder="아이디를 입력해주세요">
+        <br>
+        PW : <input type="password" placeholder="비밀번호를 입력해주세요">
+        <br>
+        EMAIL : <input type="email" placeholder="이메일을 입력해주세요">
+        <br>
+        FILE : <input type="file">
+        <br>
+        COLOR : <input type="color">
+        <br>
+        남자 <input type="radio" name="gender">
+        여자 <input type="radio" name="gender">
+        <br>
+        공부 <input type="checkbox" >
+        운동 <input type="checkbox" >
+        영화감상 <input type="checkbox" >
+        기타 <input type="checkbox" >
+        <br>
+        나이 : <input type="number">
+        <br>
+        범위 : <input type="range">
+        <br>
+        날짜 : <input type="date">
+        <br>
+        <select>
+            <option>대한민국</option>
+            <option>미국</option>
+            <option>중국</option>
+            <option>일본</option>
+            <option>프랑스</option>
+            <option>요르단</option>
+        </select>
+        <br>
+        하고싶은말
+        <br>
+        <textarea rows="10" cols="40"></textarea>
+        <input type="submit">
+    </form>
+</body>
+</html>

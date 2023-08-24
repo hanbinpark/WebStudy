@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 객체(Object)
+        // - 여러 속성과 메소드를 하나의 변수로 묶어서  저장하는 자료형
+        // - key와 value 구조
+        // {key:value, key:value, key:value, ... }
+        // - key : 문자열
+        // - value : 기본자료형, 참조형, 함수
+        // - 객체종류 : 사용자정의객체, 브라우저객체(BOM & DOM), 내장객체
+        // 1) 사용자정의객체 : 직접 정의한 객체
+        // 2) 내장객체 : JavaScript에서 제공하는 객체(Array, Date, Math)
+        // 3) 브라우저관련객체 : 브라우저에서 제공하는 객체
+        //  3-1) BOM(브라우저객체모델) : 브라우저의 기능을 제어할 수 있는 객체를 제공
+        //  3-2) DOM(문서객체모델) : HTML문서를 제어할 수 있는 객체를 제공
+
+        // 객체 생성
+        let person = {
+            "name" : "박한빈",
+            "age" : 25,
+            "gender" : "여",
+            "favoriteFood" : ["김치찌개","제육볶음","계란찜"],
+            "intro" : function () {
+                // 객체 내 속성을 접근할 때에는 this키워드를 붙여줘야 한다!
+                // 붙이지 않으면 전역변수에 정의된 변수를 찾는다.
+                console.log(`안녕하세요. 저는 ${this.name}입니다.`);
+            }
+        }
+
+        console.log(person);
+
+        // 객체 내 데이터 접근하는 방법
+        console.log(person.name);
+        console.log(person["name"]);
+
+        console.log(person.favoriteFood[0]);
+
+        // 객체 내 메소드 호출하는 방법
+        person.intro();
+
+
+
+
+    </script>
+</body>
+</html>

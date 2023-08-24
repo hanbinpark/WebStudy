@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="result-area"></div>
+	<button id="req-btn">데이터요청</button>
+	
+	
+	
+	<script src="./js/jquery-3.7.0.js"></script>
+	<script>
+		
+		// 1. 클릭했을 때 서버에 요청하여 JSONArray 데이터 받아오도록 구현
+		// 2. 받아온 데이터를 웹페이지에 출력해보기
+		// - id가 'result-area'인 div태그에 출력
+		$("#req-btn").on("click",function(){
+			$.ajax({
+				url:"GsonArray",
+				success:function(res){
+					console.log(res);
+					
+					let txt="";
+					for(let i=0; i<res.length; i++ ){
+						txt += `<p>${res[i].name} | ${res[i].price}</p>`;
+					}
+					$("#result-area").html(txt);
+				},
+			
+				error:function(){
+					alert("요청실패...");
+				}
+
+			});
+			
+			
+		});
+		
+	
+	
+	
+	</script>
+
+
+</body>
+</html>

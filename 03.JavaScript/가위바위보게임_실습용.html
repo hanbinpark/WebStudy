@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 400px;
+            height: 400px;
+            border: 5px solid black;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .box-img{
+            width: 150px;
+            height: 150px;
+        }
+
+        #result-me, #result-computer{
+            font-size: 2em;
+        }
+
+        .container>button {
+            margin-top: 10px;
+        }
+
+        .win {
+            border: 3px solid green;
+        }
+
+        .lose {
+            border: 3px solid red;
+        }
+
+        .tie {
+            border: 3px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box">
+            <h1>Me</h1>
+            <div id="box-me">...</div>
+            <h3 id="result-me">...</h3>
+        </div>
+        <div class="box">
+            <h1>Computer</h1>
+            <div id="box-computer">...</div>
+            <h3 id="result-computer">...</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <button id="btn-play" onclick="play()">Play</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        /*
+            1. 유저가 Play 버튼을 누른다.
+            2. 유저와 컴퓨터는 랜덤으로 가위, 바위, 보를 출력한다.
+            3. 유저와 컴퓨터의 값을 비교하여 출력한다.
+              3-1. 승패에 따라 win, lose 를 출력
+              3-2. 비긴 경우, tie 출력
+            4. 승패에 따라 테두리가 다르게 출력한다. ( HTML객체.style.border 활용 ) 
+              4-1. 이긴 경우, 초록색 테두리
+              4-2. 진 경우, 빨간색 테두리
+              4-3. 비긴 경우, 검정색 테두리 
+        */
+
+        let play = function(){
+            // 0 -> 가위, 1 -> 바위, 2 -> 보
+            let user = parseInt(Math.random()*3);
+            let com = parseInt(Math.random()*3);
+
+            const boxMe = document.getElementById("box-me");
+            const boxCom = document.getElementById("box-computer");
+
+            boxMe.innerHTML = `<img class= 'box-img' src = './img/${getImg(user)}.png'>`;
+            boxCom.innerHTML = `<img class= 'box-img' src = './img/${getImg(com)}.png'>`;
+
+
+            const resultMe = document.getElementById("result-me");
+            const resultCom = document.getElementById("result-computer");
+            const boxs = document.getElementsByClassName("box");
+
+            resultMe.innerText = getResultMe(user,com); 
+            resultCom.innerText = getResultCom(user,com); 
+
+           let me = getResultMe(user,com); 
+           let computer = getResultCom(user,com);
+
+            // 태그의 속성을 추가할 때 사용하는 메소드
+            // * class 속성값은 한 개 이상 정의할 수 있다.
+            //  - 공통된 스타일, 고유한 스타일, 자바스크립트로 접근, ...
+            // ex) <div class="box win lose...">
+            boxs[0].setAttribute("class",`box ${me}`);
+            boxs[1].setAttribute("class",`box ${computer}`);
+        }
+
+        let getImg = function(idx){
+            img=["scissors","rock","paper"];
+            return img[idx];
+        }
+
+        let getResultMe = function(me,com){
+            // 0 -> 가위, 1 -> 바위, 2 -> 보
+            if(me=== com) return "tie";
+            else if(me === 0) return com === 2? "win":"lose";
+            else if(me === 1) return com === 0? "win":"lose";
+            else if(me === 2) return com === 1? "win":"lose";
+            
+            // if(user===2 && com===0){
+            //     resultCom.innerText="win";
+            //     resultMe.innerText="lose";
+            // }else if(user===0 && com===2){
+            //     resultCom.innerText="lose";
+            //     resultMe.innerText="win";
+            // }else if(user > com){
+            //     resultCom.innerText="lose";
+            //     resultMe.innerText="win";
+            // }else if(user < com){
+            //     resultCom.innerText="win";
+            //     resultMe.innerText="lose";
+            // }else{
+            //     resultCom.innerText="tie";
+            //     resultMe.innerText="tie";
+            // }
+
+        }
+
+        let getResultCom = function(me,com){
+            // 0 -> 가위, 1 -> 바위, 2 -> 보
+            if(me=== com) return "tie";
+            else if(com === 0) return me === 2? "win":"lose";
+            else if(com === 1) return me === 0? "win":"lose";
+            else if(com === 2) return me === 1? "win":"lose";
+        }
+
+
+    </script>
+</body>
+
+</html>

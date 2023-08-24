@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열 함수를 활용한 실습문제
+
+        let fruits = ["apple", "avocado", "banana", "blueberry", "cherry", "dragon fruit", 
+   "fig", "grape", "kiwi", "lime", "mango", "orange", "oriental melon", "pear",
+    "peach", "pineapple", "shine muscat", "strawberry", "tomato", 
+   "water melon", "yuja"];
+
+    fruits.pop();
+        console.log(fruits);
+    
+    fruits[20] = "grapefruit";
+        console.log(fruits);
+    
+    // push()는 한 개 이상의 데이터를 추가할 수 있다.
+    fruits.push("cherry tomato", "pine nut", "korean blackberry");
+    
+    console.log(fruits.includes("orange"));
+
+    console.log(fruits.includes("kiwi"));
+    
+    let index = fruits.indexOf("water melon");
+    console.log(index);
+    fruits[19] = "melon";
+    console.log(fruits);
+    
+    let index2 = fruits.indexOf("lime");
+    console.log(index2);
+    fruits.splice(index2, 3);
+    console.log(fruits);
+
+    let index3 = fruits.indexOf("shine muascat");
+    fruits.splice(index3);
+    console.log(fruits);
+
+    let startIndex = fruits.indexOf("pear");
+    let endIndex = fruits.indexOf("pineapple");
+    let new_fruits = fruits.slice(startIndex, endIndex+1);
+    console.log(new_fruits);
+
+    
+        </script>
+</body>
+</html>

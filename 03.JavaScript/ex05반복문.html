@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 반복문
+        //  - Java와 동일하게 사용(while, do-while, for)
+
+        // 초기화구문 정의 시, let으로 변수를 초기화해야 한다!
+        // for(let i=0; i < 10; i++){
+        //     console.log(i);
+        // }
+        
+        // 실습문제 - 369게임 프로그램 만들기
+        // 1. 1~30까지 반복하는 프로그램 구현
+        // 2. 일의 자리가 3 or 6 or 9일 때 "짝" 출력
+        // 3. 2번에 해당하는 숫자가 아닌 경우에는 숫자로 출력
+        
+        // 실습문제2
+        // 1. 숫자의 범위를 1~50으로 변경
+        // 2. 30번대 숫자부터는 "짝"으로 출력
+        //  * 십의자리 비교
+        // 3. 33 or 36 or 39 의 경우 "짝짝"으로 출력
+        console.log("================369 게임================");
+        for(let i=1; i<=50; i++){
+            if(parseInt(i/10) === 3 && (i % 10 === 3 || i % 10 === 6 || i % 10 === 9)){
+                console.log("짝짝");
+            }else if(i % 10 === 3 || i % 10 === 6 || i % 10 === 9){
+                    console.log("짝");
+            }else if(parseInt(i/10) === 3){
+                console.log("짝");
+            }else{
+                console.log(i);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="map" style="width:500px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=784fd91c74fa7a5c04c75fff59443538"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(35.1466, 126.9223),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+        // 마커가 표시될 위치입니다 
+        var markerPosition  = new kakao.maps.LatLng(35.1466, 126.9223); 
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+
+        var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwPosition = new kakao.maps.LatLng(35.1466, 126.9223); //인포윈도우 표시 위치입니다
+
+        // 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            position : iwPosition, 
+            content : iwContent 
+        });
+        
+        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+        //infowindow.open(map, marker); 
+
+        // 마커에 마우스오버 이벤트를 등록합니다
+        kakao.maps.event.addListener(marker, 'mouseover', function() {
+        // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+            infowindow.open(map, marker);
+        });
+
+        // 마커에 마우스아웃 이벤트를 등록합니다
+        kakao.maps.event.addListener(marker, 'mouseout', function() {
+            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+            infowindow.close();
+        });
+
+
+	</script>
+</body>
+</html>

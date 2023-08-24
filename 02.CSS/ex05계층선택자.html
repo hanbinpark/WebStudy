@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            계층 선택자 : 위치를 기준으로 디자인을 적용하는 방법
+        */
+        /* 자손 선택자 */
+        /* div p{
+            color: red;
+        } */
+
+        /* 자식 선택자 */
+        /* div > p{
+            color: red;
+        } */
+
+        /* 근접후행 선택자 */
+        /* p + span{
+            color: red;
+        } */
+
+        /*  후행 선택자 */
+        p ~ span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>송아지</p>
+    <div>
+        <p>강아지</p>
+        <table>
+            <tr>
+                <td>
+                    <p>병아리</p>
+                </td>
+            </tr>
+        </table>
+        <span>고양이</span>
+    </div>
+
+    <p>까르보나라</p>
+    <span>토마토</span>
+    <span>바질</span>
+    <span>바지락</span>
+</body>
+</html>

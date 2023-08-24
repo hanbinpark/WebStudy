@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 실습문제) 10개의 랜덤숫자를 저장하는 배열을 만든 후, 짝수의 개수를 출력해보기
+        // 결과형태) arr에 저장된 짝수는 0,0,0,0,0 이고 총 %개 입니다.
+
+        let cnt = 0;
+        let arr = [];
+        for(let i=0; i<10; i++){
+            arr[i] = parseInt(Math.random()*10)+1;
+        }
+        
+        for(let i=0; i<arr.length; i++){
+            if (arr[i]%2 === 0){
+                cnt = cnt + 1; // cnt += 1; cnt++; ++cnt;
+            }
+        }
+        console.log(arr);
+        console.log("짝수의 개수는", cnt);
+
+        // 템플릿 문자열: 문자열과 변수를 +연산자 없이 함께 사용할 수 있는 문법
+        // 형식:  '문자열 ... ${변수} 문자열...'
+        // - 문자열 데이터를 줄바꿈하더라도 오류가 발생하지 않는다.
+        console.log('arr에 저장된 짝수는 ${new_arr}이고 총 ${cnt}개 입니다.');
+
+    </script>
+
+</body>
+</html>

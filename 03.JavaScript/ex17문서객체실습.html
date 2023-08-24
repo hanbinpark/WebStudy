@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="tit">클릭 한 번 해볼까요?</h1>
+    <p id="link-text"></p>
+    <p id="list"></p>
+
+    <button onclick="h1Change()">클릭</button>
+    <button onclick="createLink()">링크생성</button>
+    <button onclick="createList()">목록생성</button>
+
+    <script>
+        // h1태그의 내용을 변경하는 함수
+        let h1Change = function(){
+
+            const tit = document.getElementById("tit");
+
+            tit.innerText = "변경완료!";
+
+            // HTML태그 스타일 변경하는 방법
+            tit.style.color = "blue";
+            tit.style.border = "1px solid blue";
+            tit.style.backgroundColor = "skyblue";
+
+
+        }
+
+        let createLink = function(){
+            const linkText = document.getElementById("link-text");
+            linkText.innerHTML = "<a href ='https://www.naver.com'>네이버이동</a>";
+        }
+
+        let createList= function(){
+            const list = document.getElementById("list");
+
+            let arr = ["HTML","CSS","JavaScript","Java","Python"];
+            let resultHTML = "<ul>";
+
+            for(let i = 0; i<arr.length; i++){
+                resultHTML += `<li>${arr[i]}</li>`;
+            }
+            
+            resultHTML += "</ul>";
+
+            list.innerHTML = resultHTML;
+
+            // list.innerHTML = `
+            //     <ul>
+            //         <li>HTML</li>
+            //         <li>CSS</li>
+            //         <li>JavaScript</li>
+            //     </ul>
+
+            // `;
+            
+
+        }   
+
+    </script>
+
+
+</body>
+</html>

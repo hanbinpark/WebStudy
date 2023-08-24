@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tour-info-window{
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+<body>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <script src="./js/jquery-3.7.0.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=784fd91c74fa7a5c04c75fff59443538"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(35.1466, 126.9223),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+        // 광주 관광지 데이터를 요청하는 함수
+        // 1.관광지명, 주소(도로명 or 지번), 위&경도, 관리전화번호 데이터를 가져온다.
+        // 2.가져온 데이터를 객체형태로 저장한다.
+        // {tourNm: "", addr:"", lat: "", lng:"", tel:""}
+        // 3.관광지객체를 positions 배열에 저장한다.
+        let tourURL = "https://apis.data.go.kr/6290000/tourdestbaseinfo/gettourdestbaseinfo?serviceKey=t3yqqSdPU84m8Cqhi7cl%2BNCRNn9x237g%2FV32UbaM5G%2FEUlx8dJtNawws2jgNYpmppv1bm7B8Moo43FZn4leuOg%3D%3D&type=json&tourDestNm=%EA%B3%B5%EC%9B%90&pageNo=1&numOfRows=20";
+
+        let getTourData = function(){
+            $.ajax({
+                url:tourURL,
+                success:function(res){
+                    let tourList = res.TourDestBaseInfo;
+                    
+                    for (let i =0; i<tourList.length; i++){
+                       
+                        let tourNm = tourList[i].tourDestNm;
+                        let addr = tourList[i].addrRoad===""?tourList[i].addrJibun:tourList[i].addrRoad;
+                        let lat = tourList[i].lat;
+                        let lng = tourList[i].lng;
+                        let tel = tourList[i].mngAgcTel;
+
+                        let tourObj = {"tourNm": tourNm, "addr":addr, "lat":lat, "lng":lng, "tel":tel};
+                        positions.push(tourObj);
+
+                        // 마커생성하는 함수
+                        createMarker();
+                    }
+                    console.log(positions);
+                  
+                },
+                error:function(){
+                    alert("요청 실패");
+                }
+
+            });
+        }
+        getTourData();
+
+        // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
+        var positions = [];
+        
+        let createMarker = function(){
+            for (var i = 0; i < positions.length; i ++) {
+
+                let content = `
+                    <div class="tour-info-window">
+                        <span>${positions[i].tourNm}</span>
+                        <span>${positions[i].addr}</span>
+                        <span>${positions[i].tel}</span>
+                    </div>
+                `;
+                let latlng = new kakao.maps.LatLng(positions[i].lat,positions[i].lng);
+
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: latlng // 마커의 위치
+                });
+
+                // 마커에 표시할 인포윈도우를 생성합니다 
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: content // 인포윈도우에 표시할 내용
+                });
+
+                // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+                // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+                // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+                kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+            }
+
+        }
+
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
+        }
+
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+        function makeOutListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }
+	</script>
+</body>
+</html>

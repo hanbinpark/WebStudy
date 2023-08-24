@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- table태그 web에서 표 형태의 화면을 만들 때 사용
+        tr(table row)태그 - table 태그 안에서 행을 의미
+        td(table data)태그 - table 태그 안에서 열을 의미
+    -->
+    <table border="1px solid black">
+        <tr>
+            <td>번호</td>
+            <td>음식</td>
+            <td>가격</td>
+            <td>개수</td>
+        </tr>
+        <tr>
+            <td>1번</td>
+            <td>육회</td>
+            <td>33,000원</td>
+            <td rowspan="2">5개</td>
+        </tr>
+        <tr>
+            <td>2번</td>
+            <td>치킨</td>
+            <td>30,000원</td>
+        </tr>
+        <tr>
+            <td>3번</td>
+            <td>족발</td>
+            <td colspan="2">38,000원</td>
+        </tr>
+    </table>
+</body>
+</html>

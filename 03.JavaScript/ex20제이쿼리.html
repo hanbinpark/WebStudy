@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="tit">jQuery</h1>
+
+    <!-- jQuery 파일 불러오기 -->
+    <script src="./js/jquery-3.7.0.js"></script>
+    <script>
+        // jQuery 문법 : $(jQuery객체)
+        // document.getElementsByTagName("h1");
+        // -> $("h1")
+        // $(CSS선택자) : 선택자에 해당하는 모든 html객체를 배열형태로 반환하는 함수
+        
+        const $h1Tag = $("h1");
+        // const h1Tag = $("#tit"); -id로 
+         console.log($h1Tag);
+
+        // h1태그의 내용접근하는 함수
+        // JavaScript : innerText, innerHTML
+        console.log($h1Tag.text());
+        console.log($h1Tag.html());
+
+        // h1태그의 내용을 변경할 떄
+        $h1Tag.text("변경성공!");
+        // $h1Tag.html("<a href='#'>변경성공!</a>");
+
+        // h1태그 스타일변경하는 함수
+        $h1Tag.css({
+            color:"green",
+            backgroundColor:"yellow"
+        });
+
+        // h1태그 이벤트 적용하는 함수
+        $h1Tag.on("click",function(){
+            alert("클릭이벤트 실행!");
+        });
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

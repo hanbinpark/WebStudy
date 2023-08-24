@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>입력요소의 데이터 접근하기</h1>
+    <form action="">
+        <input type="text" id="user-input" value="입력해주세요">
+        <input type="button" id="btn" value="출력">
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+        // 이벤트 & 이벤트핸들러
+        // 1) 이벤트 : 웹페이지에서 마우스, 키보드입력, 스크롤 등이 발생하는 행위
+        // 2) 이벤트핸들러 : 이벤트가 감지되었을 때, 동작하는 함수
+        // * 이벤트 종류 -> p541 참고
+
+        const userInput = document.getElementById("user-input");
+        const btn = document.getElementById("btn");
+        const msg = document.getElementById("msg");
+
+        let getValue = function(){
+            // 사용자가 입력한 값에 접근하는 방법
+            // - 입력요소.value
+            // * 이외 select, textarea
+            console.log(userInput.value);
+            msg.innerText = userInput.value;
+
+        }
+
+        // 버튼 객체에 이벤트 적용하는 방법1 p.547
+        // btn.onclick = function(){
+        //     console.log("함수실행!");
+        // }
+
+        // 버튼 객체에 이벤트 적용하는 방법2 p.616
+        // btn.addEventListener("click",function(){
+        //     console.log("함수실행!!");
+        // });
+
+        // 미리 만들어진 함수를 호출하는 방법
+        // btn.addEventListener("click",getValue);
+        userInput.addEventListener("keyup",getValue);
+
+    </script>
+
+    
+</body>
+</html>
