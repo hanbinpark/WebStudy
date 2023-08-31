@@ -1,22 +1,23 @@
 package com.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.front.ICommand;
 import com.model.MemberDTO;
 import com.model.MessageDAO;
 
-@WebServlet("/MsgAllDelete")
-public class MsgAllDelete extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class MsgAllDeleteService implements ICommand{
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		System.out.println("메세지 전체 삭제 기능 구현");
 		HttpSession session = request.getSession();
 		MemberDTO info = (MemberDTO)session.getAttribute("info");
 		
@@ -24,9 +25,8 @@ public class MsgAllDelete extends HttpServlet {
 		
 		dao.allDelete(info.getEmail());
 		
-		response.sendRedirect("main.jsp#two");
-	
-	
+		return "main.jsp#two";
+		
 	}
 
 }

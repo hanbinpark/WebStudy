@@ -1,22 +1,19 @@
 package com.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.front.ICommand;
 import com.model.MemberDAO;
 import com.model.MemberDTO;
 
-@WebServlet("/JoinService")
-public class JoinService extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class JoinService implements ICommand {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("EUC-KR");
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		System.out.println("회원가입 기능 실행");
 		// 1. email,pw,phone,addr 값을 콘솔(이클립스)에 출력
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
@@ -36,9 +33,6 @@ public class JoinService extends HttpServlet {
 		}else {
 			System.out.println("회원가입 실패");
 		}
-		response.sendRedirect("main.jsp");
-	
-	
+		return "main.jsp";
 	}
-
 }

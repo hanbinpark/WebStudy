@@ -30,9 +30,9 @@ public class MemberDAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			// 2.커넥션 열기
 			// - DB가 존재하는 url, 아이디, 비밀번호
-			String db_url = "jdbc:oracle:thin:@project-db-stu3.smhrd.com:1524:xe";
-			String db_id = "Insa4_Spring_hacksim_4";
-			String db_pw = "aishcool4";
+			String db_url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String db_id = "shopping";
+			String db_pw = "12345";
 			
 			// 권한 가져오기
 			conn = DriverManager.getConnection(db_url,db_id, db_pw);
